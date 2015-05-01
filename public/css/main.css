@@ -18,10 +18,11 @@
     transition: all 1s ease;
 }
 
-.search-header{
-	color: #00BFFF;
-	font-family: 'Amatic SC', cursive;
-	font-size: 2.2em;
+.title{
+	color: #819FF7;
+	font-family: 'Pacifico', cursive;
+	text-align: center;
+	font-size: 5em;
 }
 
 body{
