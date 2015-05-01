@@ -1,0 +1,45 @@
+.vertical-center {
+  min-height: 30%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 30vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+.vertical-center-off {
+	min-height:200px;
+}
+
+
+#main-search{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.search-header{
+	color: #FF8000;
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.6em;
+}
+
+body{
+	font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
