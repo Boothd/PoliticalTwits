@@ -11,19 +11,25 @@
 
 
 #main-search{
-	padding: 200px;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
 
-.title{
-	color: #819FF7;
-	font-family: 'Pacifico', cursive;
-	text-align: center;
-	font-size: 5em;
+.title{                                                                                                                                                               
+       color: #819FF7;                                                                                                                                                
+       font-family: 'Pacifico', cursive;                                                                                                                              
+       text-align: center;                                                                                                                                            
+       font-size: 5em;   
 }
+.search-header{
+	color: #00BFFF;
+	font-family: 'Amatic SC', cursive;
+	font-size: 2.2em;
+}
+
+
 
 body{
 	font-size: 14px;
