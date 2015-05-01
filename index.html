@@ -24,6 +24,8 @@
 	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
+		<link href='http://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
@@ -32,36 +34,26 @@
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-	<!-- /container -->
-	<script>
-		window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')
-
-		 $('#search-button')
-			.click(function() {
-				$('#main-search').stop().animate($('#main-search').removeClass("vertical-center"), {
-					duration: 5000
-				});
-			});
-	</script>
 
 	<link rel="stylesheet" href="css/sidebar-transitions.css">
 
 </head>
 
 <body>
+
 	<div id="st-container" class="st-container">
 		<nav class="st-menu st-effect-12" id="menu-12">
-			<h2 class="icon icon-stack">Sidebar</h2>
+			<h2 class="icon icon-stack">Advanced Search</h2>
 			<ul>
-				<li><a class="icon icon-data" href="#">Data Management</a>
+				<li><a class="icon icon-data" href="#">Date/Time</a>
 				</li>
 				<li><a class="icon icon-location" href="#">Location</a>
 				</li>
-				<li><a class="icon icon-study" href="#">Study</a>
+				<li><a class="icon icon-study" href="#">Person</a>
 				</li>
-				<li><a class="icon icon-photo" href="#">Collections</a>
+				<li><a class="icon icon-photo" href="#">Something Else</a>
 				</li>
-				<li><a class="icon icon-wallet" href="#">Credits</a>
+				<li><a class="icon icon-wallet" href="#">HashTag Awesome</a>
 				</li>
 			</ul>
 		</nav>
@@ -91,8 +83,6 @@
 						</div>
 					</div>
 
-
-
 					<div class="main-container" id="main-content">
 
 						<div class="row vertical-center" id="main-search">
@@ -100,14 +90,14 @@
 								<!--empty-->
 							</div>
 							<div class="col-md-8">
-								<h2>Search twitter</h2>
+								<h2 class="search-header">Search</h2>
 								<div class="input-group input-group-lg">
 
 									<input type="text" class="form-control" placeholder="Search for tweets, hashtags, users or keywords">
 									<span class="input-group-btn">
-        				<button class="btn btn-default" type="button" id="search-button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        							<button class="btn btn-default" type="button" id="search-button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 									</button>
-									<button class="btn btn-default" type="button" id="advanced-search" data-effect="st-effect-12">Open door</button>
+									<button class="btn btn-default" type="button" id="advanced-search" data-effect="st-effect-12"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 									</span>
 								</div>
 							</div>
@@ -120,13 +110,24 @@
 						<hr>
 
 						<footer>
-							<p>&copy; Twitter and that. 2014</p>
+							<p>&copy; Political Twits. 2014</p>
 						</footer>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+		<!-- /container -->
+	<script>
+		
+
+		 $('#search-button')
+			.click(function() {
+				$('#main-search').stop().animate($('#main-search').removeClass("vertical-center"), {
+					duration: 5000
+				});
+			});
+	</script>
 </body>
 <script src="js/classie.js"></script>
 <script src="js/sidebarEffects.js"></script>
