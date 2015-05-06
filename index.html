@@ -20,7 +20,8 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
@@ -32,9 +33,38 @@
 
 	<link rel="stylesheet" href="css/sidebar-transitions.css">
 
+	<script>
+		// define angular module/app
+		var formApp = angular.module('formApp', []);
+
+		formApp.controller('formController', function($scope, $http) {
+			$scope.formData = {};
+		  $scope.sortType     = 'id'; // set the default sort type
+
+
+			$scope.search = function() {
+				console.log($scope.formData);
+				$http.post('/tweetSearch', $scope.formData).
+				success(function(data, status, headers, config) {
+					console.info("all ok");
+					console.info(data);
+					$scope.statuses = data.statuses;
+				}).
+				error(function(data, status, headers, config) {
+					console.error("something went wrong");
+					console.error(data);
+
+				});
+
+
+
+			};
+		});
+	</script>
+
 </head>
 
-<body>
+<body ng-app="formApp">
 
 	<div id="st-container" class="st-container">
 		<nav class="st-menu st-effect-12" id="menu-12">
@@ -54,14 +84,9 @@
 		</nav>
 
 		<div class="st-pusher">
-
-
 			<div class="st-content">
-
-
-
 				<!-- this is the wrapper for the content -->
-				<div class="st-content-inner">
+				<div class="st-content-inner" ng-controller="formController">
 					<div class="row vertical-center">
 						<div class="col-md-2">
 
@@ -99,26 +124,63 @@
 							<div class="col-md-8">
 								<div class="input-group input-group-lg">
 
-									<input type="text" class="form-control" placeholder="Search for tweets, hashtags, users or keywords">
+									<input type="text" class="form-control" placeholder="Search for tweets, hashtags, users or keywords" ng-model="formData.search">
 									<span class="input-group-btn">
-        							<button class="btn btn-default" type="button" id="search-button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        							<button class="btn btn-default" type="button" id="search-button" ng-click="search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 									</button>
 									<button class="btn btn-default" type="button" id="advanced-search" data-effect="st-effect-12"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 									</button>
 									</span>
 								</div>
 							</div>
-
 							<div class="col-md-2">
 
 							</div>
 						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<table class="table table-bordered table-striped ">
+								<thead>
+									<tr>
+										<td>
+											<a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+            id 
+            <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+										</td>
+										<td>
+											<a href="#" ng-click="sortType = 'text'; sortReverse = !sortReverse">
+          text
+            <span ng-show="sortType == 'text' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'text' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+										</td>
+										<td>
+											<a href="#" ng-click="sortType = 'created_at'; sortReverse = !sortReverse">
+          created at 
+            <span ng-show="sortType == 'created_at' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'created_at' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+										</td>
+									</tr>
+								</thead>
 
-						<hr>
+								<tbody>
+									<tr ng-repeat="status in statuses | orderBy:sortType:sortReverse | filter:searchFish">
+										<td data-title="id">{{ status.id }}</td>
+										<td data-title="text">{{ status.text }}</td>
+										<td data-title="created_at">{{ status.created_at }}</td>
+									</tr>
 
-
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
+
+
 				<footer>
 					<p>&copy; Political Twits. 2014</p>
 				</footer>
@@ -128,12 +190,13 @@
 	</div>
 	<!-- /container -->
 	<script>
+		/*
 		$('#search-button')
 			.click(function() {
 				$('#main-search').stop().animate($('#main-search').removeClass("vertical-center"), {
 					duration: 5000
 				});
-			});
+			});*/
 	</script>
 </body>
 <script src="js/classie.js"></script>
