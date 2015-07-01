@@ -12,6 +12,7 @@ var express = require('express'),
 	//favicon = require('serve-favicon'),
 	morgan = require('morgan'),
 	http = require('http');
+var methodOverride = require('method-override');
 
 var app = express();
 
@@ -25,7 +26,6 @@ var session = function(request, response, next) {
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(bodyParser.json());
 
-	var methodOverride = require('method-override');
 	app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -39,6 +39,10 @@ app.get('/simple', session, function(request, response) {
 
 app.get('/animated', session, function(request, response) {
 	response.sendFile(__dirname+'/public/animated/animated.html');
+});
+
+app.get('/d3', session, function(request,response){
+	response.sendFile(__dirname+'/public/html/d3-example.html');
 });
 
 var server = http.createServer(app).listen(app.get('port'), function() {
